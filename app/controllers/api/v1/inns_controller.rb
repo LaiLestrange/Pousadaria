@@ -1,9 +1,16 @@
 class Api::V1::InnsController < Api::V1::ApiController
 
   def details
-    inn = Inn.where('registration_number like ?', "%#{params[:query]}%")
+    inn = Inn.find_by(registration_number: params[:query])
     if inn.present?
-      
+      inn_details = {
+        name: inn.name,
+        registration_number: inn.registration_number,
+        address: inn.full_address,
+        rooms: inn.inn_rooms.count,
+      }
+      inn_details[:description] = inn.description if inn.description.present?
+      render status: 200, json: inn_details
     end
 
   end
@@ -11,13 +18,10 @@ class Api::V1::InnsController < Api::V1::ApiController
 end
 
 =begin
-  def search
-    buffets = Buffet.where('brand_name like ?', "%#{params[:query]}%")
-    if buffets.present?
-      render status: 200, json: buffets
-    else
-      msg = "Não há buffet com #{params[:query]} no nome"
-      render status: 200, json: {errors: msg}
-    end
-  end
+
+> API 1 endpoint
+formato json
+parametro: cnpj
+retorna: nome, cnpj, descricao da pousada, endereço completo, quantidade de quartos
+
 =end
