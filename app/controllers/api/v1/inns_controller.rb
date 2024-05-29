@@ -11,6 +11,8 @@ class Api::V1::InnsController < Api::V1::ApiController
       }
       inn_details[:description] = inn.description if inn.description.present?
       render status: 200, json: inn_details
+    else
+      render status: 404, json: { errors: 'Pousadaria não encontrada!'}
     end
 
   end

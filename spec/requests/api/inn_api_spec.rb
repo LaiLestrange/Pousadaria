@@ -25,5 +25,12 @@ describe "Inn API" do
       expect(json_response["rooms"]).to eq 2
 
     end
+
+    it 'fail' do
+      post '/api/v1/inn', params: { query: '1234'}
+      expect(response.status).to eq 404
+      expect(response.body).to include "Pousadaria não encontrada!"
+
+    end
   end
 end
