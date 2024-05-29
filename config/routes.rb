@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   # API
   namespace :api do
     namespace :v1 do
-      post 'inn', to: "inn#details"
+      post 'inn', to: "inns#details"
     end
   end
 end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Inn API" do
-  context "POST /api/v1/inns" do
+  context "POST /api/v1/inn" do
     it "success" do
       #ARRANGE
       owner = InnOwner.create!(email: 'leandro@email.com', password: '123456', first_name: 'Leandro', last_name: 'Carvalho', document: '95006658088')
@@ -12,7 +12,7 @@ describe "Inn API" do
       first_inn.inn_rooms.create!(name: 'Quarto Térreo', size: 30, guest_limit: 3)
 
       #ACT
-      post '/api/v1/inns', params: { query: first_inn.registration_number}
+      post '/api/v1/inn', params: { query: first_inn.registration_number}
 
       #ASSERT
       expect(response.status).to eq 200
