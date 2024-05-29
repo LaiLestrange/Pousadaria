@@ -19,4 +19,11 @@ Rails.application.routes.draw do
 
     resources :inn_rooms, only: [:show, :edit, :update]
   end
+
+  # API
+  namespace :api do
+    namespace :v1 do
+      post 'inn', to: "inn#details"
+    end
+  end
 end
