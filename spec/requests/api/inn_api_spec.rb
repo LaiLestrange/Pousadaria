@@ -18,11 +18,11 @@ describe "Inn API" do
       expect(response.status).to eq 200
       expect(response.content_type).to include 'application/json'
       json_response = JSON.parse response.body
-      expect(json_response.first["name"]).to eq "Pousada dos Devs"
-      expect(json_response.first["registration_number"]).to eq "30638898000199"
-      expect(json_response.first["description"]).to eq "Um bom lugar pra descansar"
-      expect(json_response.first["address"]).to eq "Rua X, 100 - Centro - Manaus/AM"
-      expect(json_response.first["Rooms"]).to eq 2
+      expect(json_response["name"]).to eq "Pousada dos Devs"
+      expect(json_response["registration_number"]).to eq "30638898000199"
+      expect(json_response["description"]).to eq "Um bom lugar pra descansar"
+      expect(json_response["address"]).to eq "Rua X, 100 - Centro - Manaus/AM"
+      expect(json_response["rooms"]).to eq 2
 
     end
   end
